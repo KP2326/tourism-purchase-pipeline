@@ -1,4 +1,4 @@
-# Tunes an XGBoost classifier, tracks every trial in MLflow and saves the best model.
+# Tune an XGBoost model, log every trial to MLflow and save the best one.
 import logging
 import os
 import warnings
