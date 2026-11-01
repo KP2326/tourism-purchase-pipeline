@@ -1,4 +1,4 @@
-# Cleans the raw data and writes the train/test splits to the working directory.
+# Clean the data and save the train/test split.
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -8,8 +8,7 @@ TARGET = "ProdTaken"
 df = pd.read_csv(DATA_PATH)
 print("Raw shape:", df.shape)
 
-# The first column is just the old index and CustomerID is a unique key,
-# neither carries any signal for the model.
+# first column is the old index, CustomerID is just an id
 df = df.drop(columns=["Unnamed: 0", "CustomerID"], errors="ignore")
 
 # Gender has a spelling variant ("Fe Male") that should be "Female"
@@ -22,8 +21,7 @@ before = len(df)
 df = df.drop_duplicates()
 print(f"Duplicate rows removed: {before - len(df)}")
 
-# Missing values are filled inside the model pipeline (train.py), after the
-# split, so the test set never influences the imputation values.
+# missing values get imputed in train.py, after the split, so no leakage
 print("Missing values left:", int(df.isna().sum().sum()))
 
 X = df.drop(columns=[TARGET])
