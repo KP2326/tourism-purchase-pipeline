@@ -1,5 +1,4 @@
-# Streamlit app: collects customer details and predicts whether the customer
-# is likely to buy the Wellness Tourism Package.
+# Streamlit app for the wellness package prediction.
 from pathlib import Path
 
 import joblib
