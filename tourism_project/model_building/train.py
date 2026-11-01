@@ -4,7 +4,6 @@ import os
 import warnings
 os.environ["MLFLOW_SUPPRESS_PRINTING_URL_TO_STDOUT"] = "true"  # keeps the logs readable
 warnings.filterwarnings("ignore", module="mlflow")  # signature hints, not relevant here
-logging.getLogger("mlflow").setLevel(logging.ERROR)
 
 import joblib
 import pandas as pd
@@ -18,6 +17,8 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from xgboost import XGBClassifier
+
+logging.getLogger("mlflow").setLevel(logging.ERROR)  # set after the import, mlflow resets it otherwise
 
 MODEL_PATH = "tourism_project/deployment/best_model.joblib"
 
