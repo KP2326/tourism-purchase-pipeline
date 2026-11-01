@@ -1,5 +1,4 @@
-# Registers the dataset for the pipeline: confirms the CSV is in the repo,
-# has every column we expect, and prints a quick summary of what's in it.
+# Checks the dataset in the repo has the columns we expect and prints a summary.
 import sys
 import pandas as pd
 
